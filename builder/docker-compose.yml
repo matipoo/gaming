@@ -1,0 +1,19 @@
+version: '3.1'
+services:
+
+  unity:
+    build:
+      context: unity/
+    image: unity:latest
+    restart: unless-stopped
+    ports:
+      - "26000:26000/udp"
+      - "26001:26001/udp"
+    networks:
+      - web
+    #volumes:
+    #  - ./nginx/http.conf:/etc/nginx/conf.d/http.conf:ro
+
+networks:
+  web:
+    driver: bridge
